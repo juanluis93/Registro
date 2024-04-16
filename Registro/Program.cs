@@ -1,8 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using Registro.DAL.Context;
+using System.Threading.RateLimiting;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+string conexion = builder.Configuration.GetConnectionString("VisitantesContext");
+builder.Services.AddDbContext<VisitantesContext>(e => e.UseSqlServer(conexion));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
