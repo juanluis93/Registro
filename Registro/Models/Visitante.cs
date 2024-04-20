@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Registro.BLL.Models
+namespace Registro.Web.Models
 {
     [Table("Visitantes", Schema = "dbo")]
     public class VisitanteModel
@@ -20,6 +15,6 @@ namespace Registro.BLL.Models
         public DateTime HoraSalida { get; set; }
         public string MotivoVisita { get; set; }
         public string Aula { get; set; }
-     
+    
     }
 }

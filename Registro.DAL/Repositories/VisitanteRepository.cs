@@ -14,12 +14,12 @@ namespace Registro.DAL.Repositories
     public class VisitanteRepository : IVisitante
     {
         private readonly VisitantesContext _context;
-        private readonly ILogger<Visitante> _logger;
 
-        public VisitanteRepository(VisitantesContext context, ILogger<Visitante> logger)
+        public VisitanteRepository(VisitantesContext context)
         {
             _context = context;
-            _logger = logger;
+           
+
         }
 
         public bool Exists(Expression<Func<Visitante, bool>> filter)
@@ -37,6 +37,12 @@ namespace Registro.DAL.Repositories
             return _context.Visitantes.Find(entityid);
         }
 
+        public void Remove(Visitante entity)
+        {
+            _context.Visitantes.Remove(entity);
+            _context.SaveChanges();
+        }
+
         public void Save(Visitante entity)
         {
             _context.Visitantes.Add(entity);
@@ -48,6 +54,7 @@ namespace Registro.DAL.Repositories
             try
             {
                 Visitante visitanteModificar = GetEntity(entity.ID);
+                visitanteModificar.ID = entity.ID;
                 visitanteModificar.Nombre = entity.Nombre;
                 visitanteModificar.Apellido = entity.Apellido;
                 visitanteModificar.Carrera = entity.Carrera;
@@ -57,14 +64,14 @@ namespace Registro.DAL.Repositories
                 visitanteModificar.HoraSalida = entity.HoraSalida;
                 visitanteModificar.MotivoVisita = entity.MotivoVisita;
                 visitanteModificar.Aula = entity.Aula;
-                visitanteModificar.Edad = entity.Edad;
+
 
                 _context.Update(visitanteModificar);
                 _context.SaveChanges();
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
+                
             }
         }
     }

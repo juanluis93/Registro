@@ -14,12 +14,12 @@ namespace Registro.DAL.Repositories
     public class UsuariosRepository : IUsuarios
     {
         private readonly VisitantesContext _context;
-        private readonly ILogger<Usuarios> _logger;
+      
 
         public UsuariosRepository(VisitantesContext context, ILogger<Usuarios> logger)
         {
             _context = context;
-            _logger = logger;
+        
         }
 
         public bool Exists(Expression<Func<Usuarios, bool>> filter)
@@ -35,6 +35,12 @@ namespace Registro.DAL.Repositories
         public Usuarios GetEntity(int entityid)
         {
             return _context.Usuarios.Find(entityid);
+        }
+
+        public void Remove(Usuarios entity)
+        {
+            _context.Usuarios.Remove(entity);
+            _context.SaveChanges();
         }
 
         public void Save(Usuarios entity)
@@ -57,8 +63,10 @@ namespace Registro.DAL.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
+       
             }
+
+
         }
     }
 }

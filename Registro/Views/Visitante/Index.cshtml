@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Registro.Web.Models.VisitanteModel>
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Crear nuevo cliente</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Apellido)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Carrera)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Correo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Edificio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HoraEntrada)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HoraSalida)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MotivoVisita)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Aula)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Carrera)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Correo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Edificio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoraEntrada)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoraSalida)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MotivoVisita)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aula)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-danger">Editar Visitante</a> |
+                        <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-primary">Detalles del Visitante</a> |
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

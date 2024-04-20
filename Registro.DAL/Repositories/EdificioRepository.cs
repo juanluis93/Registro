@@ -14,12 +14,12 @@ namespace Registro.DAL.Repositories
     public class EdificioRepository : IEdificios
     {
         private readonly VisitantesContext _context;
-        private readonly ILogger<Edificio> _logger;
+
 
         public EdificioRepository(VisitantesContext context, ILogger<Edificio> logger)
         {
             _context = context;
-            _logger = logger;
+            
         }
 
         public bool Exists(Expression<Func<Edificio, bool>> filter)
@@ -37,6 +37,12 @@ namespace Registro.DAL.Repositories
             return _context.Edificios.Find(entityid);
         }
 
+        public void Remove(Edificio entity)
+        {
+            _context.Edificios.Remove(entity);
+            _context.SaveChanges();
+        }
+
         public void Save(Edificio entity)
         {
             _context.Edificios.Add(entity);
@@ -49,14 +55,14 @@ namespace Registro.DAL.Repositories
             {
                 Edificio edificioModificar = GetEntity(entity.ID);
                 edificioModificar.ID = entity.ID;
-                edificioModificar.Direccion = entity.Direccion;
+                edificioModificar.Nombre = entity.Nombre;
             
                 _context.Update(edificioModificar);
                 _context.SaveChanges();
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
+                
             }
         }
     }

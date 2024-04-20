@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Registro.DAL.Context;
 using Registro.DAL.Entities;
 using Registro.DAL.Interfaces;
@@ -14,12 +15,12 @@ namespace Registro.DAL.Repositories
     public class AulaRepository : IAulas
     {
         private readonly VisitantesContext _context;
-        private readonly ILogger<Aula> _logger;
+   
 
         public AulaRepository(VisitantesContext context, ILogger<Aula> logger)
         {
             _context = context;
-            _logger = logger;
+            
         }
 
         public bool Exists(Expression<Func<Aula, bool>> filter)
@@ -35,6 +36,12 @@ namespace Registro.DAL.Repositories
         public Aula GetEntity(int entityid)
         {
             return _context.Aulas.Find(entityid);
+        }
+
+        public void Remove(Aula entity)
+        {
+            _context.Aulas.Remove(entity);
+            _context.SaveChanges();
         }
 
         public void Save(Aula entity)
@@ -57,7 +64,7 @@ namespace Registro.DAL.Repositories
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.Message);
+              
             }
         }
     }

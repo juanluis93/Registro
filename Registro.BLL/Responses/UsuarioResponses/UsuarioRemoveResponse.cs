@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Registro.BLL.Responses.UsuarioResponses
 {
-     public class UsuarioResmoveReponse: UsuarioResponse
+     public class UsuarioRemoveReponse: UsuarioResponse
     {
     }
 }

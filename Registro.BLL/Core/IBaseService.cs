@@ -11,5 +11,7 @@ namespace Registro.BLL.Dtos
     {
         ServiceResult GetAll();
         ServiceResult GetById(int Id);
+
+
     }
 }

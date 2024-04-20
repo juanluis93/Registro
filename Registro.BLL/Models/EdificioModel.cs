@@ -10,5 +10,6 @@ namespace Registro.BLL.Models
     {
         public int ID { get; set; }
         public string Direccion { get; set; }
+        public string? Nombre { get; internal set; }
     }
 }

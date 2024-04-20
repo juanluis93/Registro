@@ -9,7 +9,7 @@ namespace Registro.DAL.Core
 {
     public interface IRepositoryBase<TEntity> where TEntity : class
     {
-
+        void Remove (TEntity entity);
         void Save(TEntity entity);
         void Update(TEntity entity);
         TEntity GetEntity(int entityid);

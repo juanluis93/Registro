@@ -10,5 +10,6 @@ namespace Registro.DAL.Interfaces
 {
     public interface IUsuarios: IRepositoryBase<Usuarios>    
         {
+       
     }
 }
