@@ -18,5 +18,13 @@ namespace Registro.DAL.Context
         public VisitantesContext(DbContextOptions<VisitantesContext> options) : base(options){
 
         }
+
+  protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Aula>().ToTable("Aulas", "dbo");
+            modelBuilder.Entity<Edificio>().ToTable("Edificios", "dbo");
+            modelBuilder.Entity<Usuarios>().ToTable("Usuarios", "dbo");
+            modelBuilder.Entity<Visitante>().ToTable("Visitantes", "dbo");
+        }
     }
 }
